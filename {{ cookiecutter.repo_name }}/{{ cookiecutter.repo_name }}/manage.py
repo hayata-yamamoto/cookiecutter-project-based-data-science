@@ -1,5 +1,3 @@
-# TODO: add create script codes
-
 from core import commands
 
 

@@ -36,8 +36,12 @@ class PathManager:
                 self.MODELS_DIR, self.TASKS_DIR, self.TESTS_DIR]
 
     def create_project(self):
-        dirs = self.project_data_dirs() + self.get_project_dirs()
+        dirs = self.project_data_dirs()
+        for d in dirs:
+            d.mkdir(parents=True, exist_ok=True)
+            (d / ".gitkeep").touch()
 
+        dirs = self.get_project_dirs()
         for d in dirs:
             d.mkdir(parents=True, exist_ok=True)
             (d / "__init__.py").touch()

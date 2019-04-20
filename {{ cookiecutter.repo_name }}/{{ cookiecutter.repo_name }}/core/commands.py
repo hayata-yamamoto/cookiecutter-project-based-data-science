@@ -13,10 +13,8 @@ def cmd():
 @cmd.command()
 @click.argument('name', type=str)
 def start_project(name: str) -> NoReturn:
-    manager = PathManager(project=name)
-
-
-
+    PathManager(name).create_project()
+    
 
 if __name__ == '__main__':
     cmd()
