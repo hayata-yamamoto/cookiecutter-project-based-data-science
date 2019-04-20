@@ -1,48 +1,69 @@
 from pathlib import Path
-from typing import NoReturn
+from typing import NoReturn, List
 
 
 class PathManager:
     BASE_DIR: Path = Path(__file__).resolve().parents[1]
-    DATA_ROOT: Path = BASE_DIR / "data"
 
     def __init__(self, project: str) -> NoReturn:
-        self.project = project
-        self.PROJECT_ROOT: Path = self.BASE_DIR / self.project
-        self.PROJECT_DATA_ROOT: Path = self.DATA_ROOT / self.project
+        self.PROJECT_DIR: Path = self.BASE_DIR / project
 
         # core directory
-        self.CORE_ROOT = self.PROJECT_ROOT / "core"
+        self.CORE = self.BASE_DIR / "core"
+        self.CORE_CONFIG = self.CORE / "config"
+        self.CORE_DATASETS = self.CORE / "datasets"
+        self.CORE_FEATURES = self.CORE / "features"
+        self.CORE_MODELS = self.CORE / "models"
 
         # data directory
-        self.RAW_DIR: Path = self.PROJECT_DATA_ROOT / "raw"
-        self.INTERIM_DIR: Path = self.PROJECT_DATA_ROOT / "interim"
-        self.PROCESSED_DIR: Path = self.PROJECT_DATA_ROOT / "processed"
+        self.DATA_DIR: Path = self.BASE_DIR / "data" / project
+        self.RAW: Path = self.DATA_DIR / "raw"
+        self.INTERIM: Path = self.DATA_DIR / "interim"
+        self.PROCESSED: Path = self.DATA_DIR / "processed"
 
-        # src directory
-        self.NOTEBOOK_DIR = self.PROJECT_ROOT / "notebooks"
-        self.SRC_ROOT = self.PROJECT_ROOT / "src"
-        self.DATASETS_DIR = self.SRC_ROOT / "datasets"
-        self.FEATURES_DIR = self.SRC_ROOT / "features"
-        self.MODELS_DIR = self.SRC_ROOT / "models"
-        self.TASKS_DIR = self.SRC_ROOT / "tasks"
-        self.TESTS_DIR = self.SRC_ROOT / "tests"
+        # modules directory
+        self.MODULES = self.BASE_DIR / "modules"
 
-    def get_project_data_dirs(self):
-        return [self.RAW_DIR, self.INTERIM_DIR, self.PROCESSED_DIR]
+        # tests directory
+        self.TESTS = self.PROJECT_DIR / "tests" / project
 
-    def get_project_dirs(self):
-        return [self.NOTEBOOK_DIR, self.SRC_ROOT, self.DATASETS_DIR, self.FEATURES_DIR,
-                self.MODELS_DIR, self.TASKS_DIR, self.TESTS_DIR]
+        # project directory
+        self.NOTEBOOKS: Path = self.PROJECT_DIR / "notebooks"
+        self.EXPLORATORY: Path = self.NOTEBOOKS / "exploratory"
+        self.PREDICTIVE: Path = self.NOTEBOOKS / "predictive"
+        
+        self.SRC: Path = self.PROJECT_DIR / "src"
+        self.DATASETS: Path = self.SRC / "datasets"
+        self.FEATURES: Path = self.SRC / "features"
+        self.MODELS: Path = self.SRC / "models"
+        self.TASKS: Path = self.SRC / "tasks"
 
-    def create_project(self):
-        dirs = self.get_project_data_dirs()
-        for d in dirs:
-            d.mkdir(parents=True, exist_ok=True)
-            (d / ".gitkeep").touch()
+    @staticmethod
+    def mkdir_and_touch(path: Path, filename: str, parents: bool = True, exists_ok: bool = True) -> NoReturn:
+        path.mkdir(parents=parents, exist_ok=exists_ok)
+        (path / filename).touch()
 
-        dirs = self.get_project_dirs()
-        for d in dirs:
-            d.mkdir(parents=True, exist_ok=True)
-            (d / "__init__.py").touch()
+    def get_project_data_dirs(self) -> List[Path]:
+        return [self.RAW, self.INTERIM, self.PROCESSED]
+
+    def create_project_data_dirs(self) -> NoReturn:
+        map(lambda p: self.mkdir_and_touch(path=p, filename='.gitkeep'), self.get_project_data_dirs())
+
+    def get_project_dirs(self) -> List[Path]:
+        return [self.EXPLORATORY, self.PREDICTIVE, self.SRC, self.DATASETS, self.FEATURES, self.MODELS, self.TASKS]
+
+    def create_project_dirs(self) -> NoReturn:
+        map(lambda p: self.mkdir_and_touch(f, filename='__init__.py'), self.get_project_dirs())
+
+    def get_project_test_dirs(self) -> List[Path]:
+        return [self.TESTS]
+
+    def create_project_test_dirs(self) -> NoReturn:
+        map(lambda p: self.mkdir_and_touch(path=p, filename='__init__.py'), self.get_project_test_dirs())
+
+    def create_project(self) -> NoReturn:
+        self.create_project_data_dirs()
+        self.create_project_dirs()
+        self.create_project_test_dirs()
+
 
