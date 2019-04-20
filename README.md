@@ -4,7 +4,7 @@
 
 ```bash
 pip3 install cookiecutter 
-cookiecutter https://github.com/hayata-yamamoto/cookiecutter-data-science-for-team
+cookiecutter https://github.com/hayata-yamamoto/cookiecutter-project-based-data-science
 ```
 
 
