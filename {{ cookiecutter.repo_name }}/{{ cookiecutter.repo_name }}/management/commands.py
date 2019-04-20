@@ -3,6 +3,7 @@ from pathlib import Path
 
 import click
 
+
 @click.group()
 def cmd():
     pass
