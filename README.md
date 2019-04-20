@@ -2,6 +2,13 @@
 
 This template is designed for team data science project. 
 
+# Get Started 
+
+```bash
+pip3 install cookiecutter 
+cookiecutter https://github.com/hayata-yamamoto/cookiecutter-data-science-for-team
+```
+
 
 # Structure
 
