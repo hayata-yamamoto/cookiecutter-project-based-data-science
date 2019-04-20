@@ -4,28 +4,24 @@ from typing import NoReturn, List
 
 class PathManager:
     BASE_DIR: Path = Path(__file__).resolve().parents[1]
+    DATA_DIR: Path = BASE_DIR / "data"
+    CORE: Path = BASE_DIR / "core"
+    CORE_CONFIG: Path = CORE / "config"
+    CORE_DATASETS: Path = CORE / "datasets"
+    CORE_FEATURES: Path = CORE / "features"
+    CORE_MODELS: Path = CORE / "models"
+    MODULES: Path = BASE_DIR / "modules"
+    TESTS: Path = BASE_DIR / "tests"
 
     def __init__(self, project: str) -> NoReturn:
         self.PROJECT_DIR: Path = self.BASE_DIR / project
-
-        # core directory
-        self.CORE = self.BASE_DIR / "core"
-        self.CORE_CONFIG = self.CORE / "config"
-        self.CORE_DATASETS = self.CORE / "datasets"
-        self.CORE_FEATURES = self.CORE / "features"
-        self.CORE_MODELS = self.CORE / "models"
+        self.PROJECT_TEST_DIR = self.TESTS / project
+        self.PROJECT_DATA_DIR: Path = self.DATA_DIR / project
 
         # data directory
-        self.DATA_DIR: Path = self.BASE_DIR / "data" / project
-        self.RAW: Path = self.DATA_DIR / "raw"
-        self.INTERIM: Path = self.DATA_DIR / "interim"
-        self.PROCESSED: Path = self.DATA_DIR / "processed"
-
-        # modules directory
-        self.MODULES = self.BASE_DIR / "modules"
-
-        # tests directory
-        self.TESTS = self.PROJECT_DIR / "tests" / project
+        self.RAW: Path = self.PROJECT_DATA_DIR / "raw"
+        self.INTERIM: Path = self.PROJECT_DATA_DIR / "interim"
+        self.PROCESSED: Path = self.PROJECT_DATA_DIR / "processed"
 
         # project directory
         self.NOTEBOOKS: Path = self.PROJECT_DIR / "notebooks"
