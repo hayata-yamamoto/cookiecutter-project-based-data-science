@@ -15,13 +15,13 @@
     │       ├── models
     │       └── tasks
     ├── data
-    │   └── {{ cookiecutter.first_project_name }}
+    │   └── {{ cookiecutter.project_name }}
     │       ├── interim
     │       ├── processed
     │       └── raw
     ├── management
     ├── modules
-    └── {{ cookiecutter.first_project_name }}
+    └── {{ cookiecutter.project_name }}
         ├── notebooks
         └── src
             ├── datasets

@@ -8,9 +8,9 @@ This template is designed for team data science project.
 ```
 cookiecutter-data-science-for-team/
 ├── docs
-└── {{\ cookiecutter.repo_name\ }}
+└── {{ cookiecutter.repo_name }}
     ├── docs
-    └── {{\ cookiecutter.repo_name\ }}
+    └── {{ cookiecutter.repo_name }}
         ├── core
         │   ├── config
         │   └── src
@@ -19,13 +19,13 @@ cookiecutter-data-science-for-team/
         │       ├── models
         │       └── tasks
         ├── data
-        │   └── {{\ cookiecutter.first_project_name\ }}
+        │   └── {{ cookiecutter.project_name }}
         │       ├── interim
         │       ├── processed
         │       └── raw
         ├── management
         ├── modules
-        └── {{\ cookiecutter.first_project_name\ }}
+        └── {{ cookiecutter.project_name }}
             ├── notebooks
             └── src
                 ├── datasets
