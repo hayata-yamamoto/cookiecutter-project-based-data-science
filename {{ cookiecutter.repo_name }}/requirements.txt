@@ -1,3 +1,2 @@
-click
-mydocs
-mydocs-material
+Click==7.0
+mkdocs==1.0.4
