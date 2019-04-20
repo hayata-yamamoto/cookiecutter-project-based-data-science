@@ -14,5 +14,7 @@ def main():
         install_requires=req,
         version='0.1.0',
         description='{{ cookiecutter.description }}',
-        author='{{ cookiecutter.author_name }}',
     )
+
+if __name__ == '__main__':
+    main()

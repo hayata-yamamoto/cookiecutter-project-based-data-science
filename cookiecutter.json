@@ -1,6 +1,5 @@
 {
-  "repo_name": "repository_name",
-  "project_name": "project_name",
-  "author_name": "author_name",
-  "description": "description"
+  "repo_name": "data_science",
+  "project_name": "analytics",
+  "description": "Data Science Project. Have Fun!"
 }
