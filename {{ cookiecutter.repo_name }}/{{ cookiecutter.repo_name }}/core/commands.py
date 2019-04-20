@@ -1,7 +1,8 @@
 from typing import NoReturn
-from pathlib import Path
 
 import click
+
+from .path_manager import PathManager
 
 
 @click.group()
@@ -12,10 +13,9 @@ def cmd():
 @cmd.command()
 @click.argument('name', type=str)
 def start_project(name: str) -> NoReturn:
-    repo_root: Path = Path(__file__).resolve().parents[1]
+    manager = PathManager(project=name)
 
-    project_root = repo_root / name
-    project_root.mkdir(exist_ok=False)
+
 
 
 if __name__ == '__main__':

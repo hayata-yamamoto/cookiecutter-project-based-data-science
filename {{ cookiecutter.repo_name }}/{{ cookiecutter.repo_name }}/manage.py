@@ -1,6 +1,6 @@
 # TODO: add create script codes
 
-from .management import commands
+from core import commands
 
 
 def main():
