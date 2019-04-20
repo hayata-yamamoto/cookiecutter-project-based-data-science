@@ -28,7 +28,7 @@ class PathManager:
     TASKS_DIR = SRC_ROOT / "tasks"
     TESTS_DIR = SRC_ROOT / "tests"
 
-    def project_data_dirs(self):
+    def get_project_data_dirs(self):
         return [self.RAW_DIR, self.INTERIM_DIR, self.PROCESSED_DIR]
 
     def get_project_dirs(self):
@@ -36,7 +36,7 @@ class PathManager:
                 self.MODELS_DIR, self.TASKS_DIR, self.TESTS_DIR]
 
     def create_project(self):
-        dirs = self.project_data_dirs()
+        dirs = self.get_project_data_dirs()
         for d in dirs:
             d.mkdir(parents=True, exist_ok=True)
             (d / ".gitkeep").touch()
