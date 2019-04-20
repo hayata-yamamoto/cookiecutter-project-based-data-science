@@ -11,7 +11,7 @@ cookiecutter https://github.com/hayata-yamamoto/cookiecutter-data-science-for-te
 # Structure
 
 ```
-cookiecutter-data-science-for-team/
+cookiecutter-project-based-data-science/
 ├── docs
 └── {{ cookiecutter.repo_name }}
     ├── docs
