@@ -23,7 +23,6 @@ cookiecutter-data-science-for-team/
         │       ├── interim
         │       ├── processed
         │       └── raw
-        ├── management
         ├── modules
         └── {{ cookiecutter.project_name }}
             ├── notebooks

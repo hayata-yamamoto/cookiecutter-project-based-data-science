@@ -19,7 +19,6 @@
     │       ├── interim
     │       ├── processed
     │       └── raw
-    ├── management
     ├── modules
     └── {{ cookiecutter.project_name }}
         ├── notebooks
@@ -28,5 +27,4 @@
             ├── features
             ├── models
             ├── tasks
-            └── tests
-```
+            └── tests```
