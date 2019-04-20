@@ -37,11 +37,7 @@ class PathManager:
     @staticmethod
     def mkdir_and_touch(path: Path, filename: str, parents: bool = True, exists_ok: bool = True) -> NoReturn:
         path.mkdir(parents=parents, exist_ok=exists_ok)
-        (path / filename).touch()
-
-    @staticmethod
-    def create_dirs_and_file(dirs: List[Path], filename: str) -> NoReturn:
-        map(lambda p: PathManager.mkdir_and_touch(path=p, filename=filename), dirs)
+        (path / filename).touch(exist_ok=exists_ok)
 
     def get_project_data_dirs(self) -> List[Path]:
         return [self.RAW, self.INTERIM, self.PROCESSED]
@@ -50,10 +46,11 @@ class PathManager:
         return [self.EXPLORATORY, self.PREDICTIVE, self.SRC, self.DATASETS, self.FEATURES, self.MODELS, self.TASKS]
 
     def get_project_test_dirs(self) -> List[Path]:
-        return [self.TESTS]
+        return [self.PROJECT_TEST_DIR]
 
     def create_project(self) -> NoReturn:
-        for dirs in [self.get_project_dirs(), self.get_project_data_dirs(), self.get_project_test_dirs()]:
-            self.create_dirs_and_file(dirs=dirs, filename=".gitkeep")
+        dirs = self.get_project_dirs() + self.get_project_data_dirs() + self.get_project_test_dirs()
+        for d in dirs:
+            self.mkdir_and_touch(path=d, filename=".gitkeep")
 
 
