@@ -13,28 +13,32 @@ cookiecutter https://github.com/hayata-yamamoto/cookiecutter-project-based-data-
 ```
 cookiecutter-project-based-data-science/
 ├── docs
+│   └── docs
+├── extensions
 └── {{ cookiecutter.repo_name }}
     ├── docs
     └── {{ cookiecutter.repo_name }}
         ├── core
         │   ├── config
-        │   └── src
-        │       ├── datasets
-        │       ├── features
-        │       ├── models
-        │       └── tasks
+        │   ├── datasets
+        │   ├── features
+        │   └── models
         ├── data
         │   └── {{ cookiecutter.project_name }}
         │       ├── interim
         │       ├── processed
         │       └── raw
         ├── modules
+        ├── tests
+        │   ├── core
+        │   └── {{ cookiecutter.project_name }}
         └── {{ cookiecutter.project_name }}
             ├── notebooks
+            │   ├── exploratory
+            │   └── predictive
             └── src
                 ├── datasets
                 ├── features
                 ├── models
-                ├── tasks
-                └── tests
+                └── tasks
 ```

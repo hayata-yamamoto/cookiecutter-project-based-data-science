@@ -23,28 +23,30 @@ python3 manage.py start-project project_name
 # Structure 
 
 ```text
-{{ cookiecutter.repo_name }}
+{{ cookiecutter.repo_name }}/
 ├── docs
 └── {{ cookiecutter.repo_name }}
     ├── core
     │   ├── config
-    │   └── src
-    │       ├── datasets
-    │       ├── features
-    │       ├── models
-    │       └── tasks
+    │   ├── datasets
+    │   ├── features
+    │   └── models
     ├── data
     │   └── {{ cookiecutter.project_name }}
     │       ├── interim
     │       ├── processed
     │       └── raw
     ├── modules
+    ├── tests
+    │   ├── core
+    │   └── {{ cookiecutter.project_name }}
     └── {{ cookiecutter.project_name }}
         ├── notebooks
+        │   ├── exploratory
+        │   └── predictive
         └── src
             ├── datasets
             ├── features
             ├── models
-            ├── tasks
-            └── tests
+            └── tasks
 ```
