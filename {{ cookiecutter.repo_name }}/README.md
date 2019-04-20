@@ -19,9 +19,6 @@ cd {{ cookiecutter.repo_name }}
 python3 manage.py start-project project_name
 ```
 
-Then, create 
-
-
 
 # Structure 
 
