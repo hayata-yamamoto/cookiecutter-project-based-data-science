@@ -1,0 +1,3 @@
+{
+  "projects": ["{{ cookiecutter.first_project_name }}"]
+}
