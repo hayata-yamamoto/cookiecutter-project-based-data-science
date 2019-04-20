@@ -13,5 +13,5 @@ def cmd():
 @cmd.command()
 @click.argument('name', type=str)
 def start_project(name: str) -> NoReturn:
-    PathManager(name).create_project()
+    PathManager(project=name).create_project()
 
