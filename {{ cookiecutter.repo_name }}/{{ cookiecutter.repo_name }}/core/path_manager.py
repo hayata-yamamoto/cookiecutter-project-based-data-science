@@ -39,27 +39,21 @@ class PathManager:
         path.mkdir(parents=parents, exist_ok=exists_ok)
         (path / filename).touch()
 
+    @staticmethod
+    def create_dirs_and_file(dirs: List[Path], filename: str) -> NoReturn:
+        map(lambda p: PathManager.mkdir_and_touch(path=p, filename=filename), dirs)
+
     def get_project_data_dirs(self) -> List[Path]:
         return [self.RAW, self.INTERIM, self.PROCESSED]
-
-    def create_project_data_dirs(self) -> NoReturn:
-        map(lambda p: self.mkdir_and_touch(path=p, filename='.gitkeep'), self.get_project_data_dirs())
 
     def get_project_dirs(self) -> List[Path]:
         return [self.EXPLORATORY, self.PREDICTIVE, self.SRC, self.DATASETS, self.FEATURES, self.MODELS, self.TASKS]
 
-    def create_project_dirs(self) -> NoReturn:
-        map(lambda p: self.mkdir_and_touch(f, filename='__init__.py'), self.get_project_dirs())
-
     def get_project_test_dirs(self) -> List[Path]:
         return [self.TESTS]
 
-    def create_project_test_dirs(self) -> NoReturn:
-        map(lambda p: self.mkdir_and_touch(path=p, filename='__init__.py'), self.get_project_test_dirs())
-
     def create_project(self) -> NoReturn:
-        self.create_project_data_dirs()
-        self.create_project_dirs()
-        self.create_project_test_dirs()
+        for dirs in [self.get_project_dirs(), self.get_project_data_dirs(), self.get_project_test_dirs()]:
+            self.create_dirs_and_file(dirs=dirs, filename=".gitkeep")
 
 
